@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
+import { initializeApp } from "firebase/app";
 
 
 
@@ -13,7 +14,6 @@ const firebaseConfig = {
   storageBucket: "disneyplus-clone-e8a1b.appspot.com",
   messagingSenderId: "919172495261",
   appId: "1:919172495261:web:1174cc499010a3f27da174"
-  
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -29,6 +29,6 @@ const storage = firebase.storage();
 export { auth, provider, storage };
 export default db;
 // export  initializeApp;
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 // export default firebase;
