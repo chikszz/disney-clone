@@ -1,47 +1,30 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectOriginal } from "../features/movie/movieSlice";
 
 const Originals = (props) => {
-    return (
-        <Container>
-            <h4>Originals</h4>
-            <Content>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/old_images/MOVIE/667/1770000667/1770000667-h"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/5508/675508-h"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/8954/1368954-i-6ddc77ce7364"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/4168/1524168-v-aa781d26b891"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-            </Content>
-        </Container>
-    );
+  const movies = useSelector(selectOriginal);
+  console.log(movies, ":🛢️");
+
+  return (
+    <Container>
+      <h4>Originals</h4>
+      <Content>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/` + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
+      </Content>
+    </Container>
+  );
 };
+
 
 const Container = styled.div`
     padding: 0 0 26px;

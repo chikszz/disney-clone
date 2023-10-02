@@ -1,47 +1,29 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectNewDisney } from "../features/movie/movieSlice";
 
 const NewDisney = (props) => {
+    const movies = useSelector(selectNewDisney);
+    console.log(movies, ":🛢️");
+  
     return (
-        <Container>
-            <h4>New to Disney+</h4>
-            <Content>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/9945/1279945-h-2822103a78da"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg"
-                            alt="Inside Out"
-                            />
-                        </Link>
-                    </Wrap>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/2352/1282352-h-23698d5e8f30"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-                    <Wrap>
-                        <Link to="/">
-                        <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/4280/674280-h"
-                            alt=""
-                            />
-                        </Link>
-                    </Wrap>
-            </Content>
-        </Container>
+      <Container>
+        <h4>NewDisney</h4>
+        <Content>
+          {movies &&
+            movies.map((movie, key) => (
+              <Wrap key={key}>
+                {movie.id}
+                <Link to={`/detail/` + movie.id}>
+                  <img src={movie.cardImg} alt={movie.title} />
+                </Link>
+              </Wrap>
+            ))}
+        </Content>
+      </Container>
     );
-};
+  };
 
 const Container = styled.div`
     padding: 0 0 26px;
