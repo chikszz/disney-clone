@@ -17,8 +17,8 @@ const NewDisney = (props) => {
                     <Wrap>
                         <Link to="/">
                         <img
-                            src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/old_images/MOVIE/674/1770000674/1770000674-h"
-                            alt=""
+                            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=400&aspectRatio=1.78&format=jpeg"
+                            alt="Inside Out"
                             />
                         </Link>
                     </Wrap>
